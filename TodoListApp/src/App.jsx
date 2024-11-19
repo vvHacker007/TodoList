@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import TodoInput from "./components/TodoInput"
 import TodoList from "./components/TodoList"
-import { getTasks, getTask, addTask, deleteTask, updateTask } from "./Tasks"
+import { getTasks, getTask, addTask, deleteTask, updateTask, updateTodoStatus } from "./Tasks"
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -32,6 +32,12 @@ function App() {
     setTodos(getTasks())
   };
 
+  function changeTodoStatus(todoIndex) {
+    updateTodoStatus(todoIndex)
+    setTodos(getTasks())
+  };
+
+
   function getTaskAt(index) {
     console.log('Task At INdex',index," is ", getTask(index));
     return getTask(index);
@@ -60,6 +66,7 @@ function App() {
         deleteTodo={deleteTodo}
         setEditTodo={setEditTodo} 
         cancelUpdateTodo={cancelUpdateTodo}
+        changeTodoStatus={changeTodoStatus}
       />
     </>
   )

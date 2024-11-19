@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default function TodoCard(props) {
-  const { children, todoIndex, deleteTodo, setEditTodo } = props
+  const { children, todoIndex, deleteTodo, setEditTodo, changeTodoStatus } = props
 
   function handleDeleteTask() {
     console.log("Delete Task at index", children);
@@ -13,11 +13,15 @@ export default function TodoCard(props) {
     setEditTodo(todoIndex);
   }
 
+  function handleDoneTask() {
+    changeTodoStatus(todoIndex);
+  };
+
   return ( 
     <li className='todoItem'>
-      {children}
+      {children.props.children.task}
       <div className='actionsContainer'>
-        <input type="checkbox" defaultChecked={false} />
+        <input type="checkbox" defaultChecked={false} checked={children.props.children.isDone} onChange={handleDoneTask}/>
         <button className='editButton'  onClick={handleUpdateTask}>
           <i class="fa-regular fa-pen-to-square"></i>
         </button>

@@ -79,16 +79,17 @@ p {
   padding: 14px;
   border-radius: 14px;
   background: white;
+  width: 100%; /* Make sure it stretches across the width */
 }
 
 .todoItem p {
-  flex: 1;
+  flex-grow: 1; /* Allow the task text to take up remaining space */
 }
 
 .actionsContainer {
   display: flex;
-  align-items: center;
   gap: 14px;
+  margin-left: auto; /* Align the container to the right */
 }
 
 .actionsContainer button {
@@ -102,10 +103,7 @@ p {
   opacity: 0.7;
 }
 
-
-
 @media (min-width: 640px) {
-
   header button,
   header input {
     font-size: 1.2em;

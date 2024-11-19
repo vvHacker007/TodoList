@@ -7,7 +7,7 @@ export default function TodoInput(props) {
 
   useEffect(() => {
     if (editTodo !== null) {
-      setTaskName(getTaskAt(editTodo));
+      setTaskName(getTaskAt(editTodo).task);
     }
   }, [editTodo, getTaskAt]);
 
